@@ -1,9 +1,7 @@
 const express = require("express");
-
-const artisRoutes = require("./artis");
-
-// creates a new router instance
 const router = express.Router();
+
+const artisRoutes = require("./artis.route");
 
 router.get("/ping", (req, res) => {
   const ready = {
