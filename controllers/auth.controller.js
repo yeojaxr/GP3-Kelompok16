@@ -12,16 +12,19 @@ class AuthController {
 
     try {
       const salt = await bcrypt.genSalt(10);
-      const hashesPassword = await bcrypt.hash(password, salt);
+      const hashesPassword = await bcrypt.hash(
+        password,
+        salt
+      );
       const user = new AuthModel({
         email: email,
-        password: hashesPassword
-      })
+        password: hashesPassword,
+      });
 
       const saved = await user.save();
       res.status(201).send(saved);
     } catch (error) {
-      res.status(500)
+      res.status(500);
       console.log(error);
     }
   }
@@ -35,18 +38,32 @@ class AuthController {
 
     try {
       const user = await UserModel.findOne({
-        email: email
+        email: email,
       });
       if (user) {
-        const auth = await bcrypt.compare(password, user.password)
+        const auth = await bcrypt.compare(
+          password,
+          user.password
+        );
         if (auth) {
-          return user;
+          res.json({
+            message: "Login success",
+          });
+        } else {
+          res.json({
+            message: "Incorrect password",
+          });
+          throw Error("Incorrect password");
         }
-        throw Error("Incorrect password")
+      } else {
+        res.json({
+          message: "Incorrect email",
+        });
+        throw Error("Incorrect email");
       }
-      throw Error("Incorrect email")
     } catch (error) {
-      res.status(500).json(err);
+      res.status(500);
+      console.log(error);
     }
   }
 }
