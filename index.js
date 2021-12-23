@@ -23,6 +23,7 @@ async function main() {
     app.use(psikologRoutes);
     app.use(userRoutes);
     app.use(authRoutes);
+    app.use(psikologRoutes);
 
     app.listen(port, () => {
       console.log("Server is running on port", port);
