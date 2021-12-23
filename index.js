@@ -5,6 +5,8 @@ const express = require("express");
 
 const artisRoutes = require("./routes/artis.route");
 const authRoutes = require("./routes/auth.route");
+const psikologRoutes = require("./routes/psikolog.route");
+const userRoutes = require("./routes/user.route")
 const db = require("./helpers/db");
 
 const port = process.env.PORT || 3000;
@@ -18,6 +20,8 @@ async function main() {
 
     app.use(express.json()); // agar kita bisa ambil reques body json
     app.use(artisRoutes);
+    app.use(psikologRoutes);
+    app.use(userRoutes);
     app.use(authRoutes);
 
     app.listen(port, () => {
