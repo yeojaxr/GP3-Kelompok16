@@ -25,7 +25,7 @@ async function main() {
     app.use(authRoutes);
     app.use(psikologRoutes);
 
-    app.listen(port, () => {
+    app.listen(process.env.port || 3000, "0.0.0.0", () => {
       console.log("Server is running on port", port);
     });
   } catch (error) {
