@@ -1,31 +1,31 @@
 const mongoose = require("mongoose");
 
 const opts = {
-    timestamps: true,
+  timestamps: true,
 };
 
 const webinarSchema = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-        },
-        profile: {
-            type: String,
-        },
-        keahlian: {
-            type: [String], 
-        },
-        keahlian_lain: {
-            type: [String], 
-        },
-        pendekatan_terapi: {
-            type: [String], 
-        },
+  {
+    title: {
+      type: String,
     },
-    opts
+    thumbnail: {
+      type: String,
+    },
+    desc: {
+      type: [String],
+    },
+    url: {
+      type: [String],
+    },
+    author: {
+      type: [String],
+    },
+  },
+  opts
 );
 
 // create new model (nameCollection, nameSchema)
-const PsikologSchema = mongoose.model("Psikolog", psikologSchema);
+const WebinarSchema = mongoose.model("Webinar", webinarSchema);
 
-module.exports = PsikologSchema;
+module.exports = WebinarSchema;

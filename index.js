@@ -6,7 +6,8 @@ const express = require("express");
 const artisRoutes = require("./routes/artis.route");
 const authRoutes = require("./routes/auth.route");
 const psikologRoutes = require("./routes/psikolog.route");
-const userRoutes = require("./routes/user.route")
+const userRoutes = require("./routes/user.route");
+const webinarRoutes = require("./routes/webinar.route");
 const db = require("./helpers/db");
 
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ async function main() {
     app.use(psikologRoutes);
     app.use(userRoutes);
     app.use(authRoutes);
+    app.use(webinarRoutes);
     app.use(psikologRoutes);
 
     app.listen(process.env.port || 3000, "0.0.0.0", () => {
