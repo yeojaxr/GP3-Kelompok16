@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth.route");
 const blogRoutes = require("./routes/blog.route");
 const categoryRoutes = require("./routes/category.route");
 const psikologRoutes = require("./routes/psikolog.route");
+const userRoutes = require("./routes/user.route")
 const db = require("./helpers/db");
 
 const port = process.env.PORT || 3000;
@@ -36,6 +37,8 @@ async function main() {
     app.use("/images", express.static(path.join(__dirname, "/images")));
 
     app.use(artisRoutes);
+    app.use(psikologRoutes);
+    app.use(userRoutes);
     app.use(authRoutes);
     app.use(blogRoutes);
     app.use(categoryRoutes);
