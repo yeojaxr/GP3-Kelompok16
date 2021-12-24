@@ -1,27 +1,6 @@
 const UserModel = require("../models/user.model");
 
 class UserController {
-  static async createNewUser(req, res) {
-    // todo: get `name` from req body
-    // create a new artis object
-    // save to db
-    try {
-      const body = req.body;
-
-      const email = body.email;
-      const password = body.password;
-
-      const user = new UserModel({
-        email: email,
-        password: password,
-      });
-
-      const saved = await user.save();
-      res.status(201).send(saved);
-    } catch (error) {
-      res.status(500).send({ err: error });
-    }
-  }
 
   static async getAllUser(req, res) {
     try {
