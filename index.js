@@ -44,6 +44,7 @@ async function main() {
     app.use(blogRoutes);
     app.use(categoryRoutes);
     app.use(psikologRoutes);
+    app.use(webinarRoutes);
 
     // upload image route
     app.post("/upload", upload.single("file"), (req, res) => {
